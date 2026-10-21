@@ -14,11 +14,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Installer PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.3'
-
       - name: Analyse SonarQube Cloud
         uses: SonarSource/sonarqube-scan-action@v4.1.0
         env:
