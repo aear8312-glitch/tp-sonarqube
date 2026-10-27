@@ -14,6 +14,18 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Installer PHP et Xdebug
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          coverage: xdebug
+
+      - name: Installer les dépendances
+        run: composer install --no-interaction --prefer-dist
+
+      - name: Lancer les tests et créer le rapport de couverture
+        run: vendor/bin/phpunit --coverage-clover coverage.xml
+
       - name: Analyse SonarQube Cloud
         uses: SonarSource/sonarqube-scan-action@v5.3.1
         env:
